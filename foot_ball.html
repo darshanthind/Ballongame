@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jQuary.js"></script>
+    <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">  
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>  
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>  
+
+</head>
+<style>
+    body{
+        background: linear-gradient(coral,orange);
+        overflow: hidden;
+    }
+    .wall{
+        position:relative;
+        width:1px;
+        height:100vh;
+        border:2px solid  black;
+        float:right
+
+    }
+    .walldown{
+        position:relative;
+        width:100vw;
+        height:1px;
+        border:2px solid  black;
+        top:550px;
+        
+
+    }
+    #box1{
+        position:absolute;
+        /* border: 3px solid red; */
+        border-right: none;
+        width:60px;
+        top:40px;
+        height:60px;
+        right:15px;
+    }
+    #box2{
+        position:absolute;
+        /* border: 3px solid green; */
+        border-right: none;
+        width:60px;
+        top:120px;
+        height:60px;
+        right:15px;
+    }
+    #box3{
+        position:absolute;
+        /* border: 3px solid yellow; */
+        border-right: none;
+        width:60px;
+        top:200px;
+        height:60px;
+        right:15px;
+    }
+    #box4{
+        position:absolute;
+        /* border: 3px solid green; */
+        border-right: none;
+        width:60px;
+        top:280px;
+        height:60px;
+        right:15px;
+    }
+    #box5{
+        position:absolute;
+        /* border: 3px solid red; */
+        border-right: none;
+        width:60px;
+        top:360px;
+        height:60px;
+        right:15px;
+    }
+    #box6{
+        position:absolute;
+        /* border: 3px solid pink; */
+        border-right: none;
+        width:60px;
+        top:440px;
+        height:60px;
+        right:15px;
+    }
+    #imgs{
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        top: 200px;
+    }
+    #but{
+        position: relative;
+        top:530px;
+        left:20px;
+    }
+    #number{
+        position:absolute;
+        width:50px;
+        height: 50px;
+        top:0px;
+        left:650px;
+        border: 2px solid black;
+    }
+    #prints{
+        text-align: center;
+        font-size:20px;
+    }
+    #scor{
+        width:100px;
+        height:40px;
+        position: absolute;
+        /* border: 3px solid black; */
+        /* text-align:center; */
+        left:550px;
+    }
+    #moneys{    
+        width:200px;
+        height:200px;
+        position:absolute;
+        top:200px;
+        display:none;
+        right:600px;
+        /* border: 3px solid black; */
+
+    }
+    .but{
+        position:fixed;
+        bottom:30px;
+    }
+    .but button{
+        width:100px;
+        height:40px;
+        background-color: orangered;
+
+    }
+
+</style>
+<body>
+<div>
+<div class="wall"></div>
+<img src="balls-removebg-preview.png" alt="ball" id="imgs">
+<div id="scor">
+    <p>MONEY:<span id="socar"></span></p>
+</div>
+
+<img src="red_balloon__1_-removebg-preview.png" alt="" id="box1">
+<img src="green__1_-removebg-preview.png" alt="" id="box2">
+<img src="yelow__1_-removebg-preview.png" alt="" id="box3">
+<img src="green__1_-removebg-preview.png" alt="" id="box4">
+
+<img src="red_balloon__1_-removebg-preview.png" alt="" id="box5">
+<img src="pink (1).png" alt="" id="box6">
+<div id="number">
+    <p id="prints"></p>
+</div>
+<div id="moneys">
+    <img  alt="" style="width:100%;height:100%" id="money">
+</div>
+<div class="but">
+ <button id="but1">Random1</button>
+ <button id="but2">Random2</button>
+ <button id="but3">Random3</button>
+ <button id="but4">Random4</button>
+ <button id="but5">Random5</button>
+ <button id="but6">Random6</button>
+</div>
+<!-- <button id="but">Click me</button>  -->
+<div class="walldown"></div>
+</div>
+</body>
+<script>
+    // var loadenumber=[];
+    var imgs=["money-removebg-preview.png","money2-removebg-preview.png","red.jpg"]
+    var boxs=[0,20,100,180,260,340,420];
+    var vist=["0","false","false","false","false","false","false"];
+    let scors=[1000,10,-500];
+    let socors=0;
+    let sounds=new Audio("balloonpop-83760.mp3");
+    // $(document).ready(()=>{
+    //     let a=1;
+    //     $('#but').click(()=>{
+    //      var p=$('#prints');
+    //      var number=Math.floor(Math.random()*6)+1;
+    //      if(vist[number]=="false"){
+    //     vist[number]="true";
+    //      p.html(number);
+    //      let tops=boxs[number];
+    //      let b="#box";
+    //      b+=number;
+    //     var ball=$('#imgs');
+    //     ball.animate({left:"87vw",top:tops+'px'},3000,function(){
+    //      $(b).effect({
+    //             duration:3000,
+    //             effect:"explode",
+    //             pieces:200
+    //         });
+    //         ball.css({left:"0px",top:"200px"});
+        
+    //         let rup;
+    //         // console.log(color);
+    //         if(b=="#box1" || b=="#box5"){
+    //             $('#money').attr("src",imgs[2]);
+    //             rup=scors[2];
+    //         }else if(b=="#box2" || b=="#box4"){
+    //             $('#money').attr("src",imgs[0]);
+    //             rup=scors[0];
+    //         }else if(b=="#box3"|| b=="#box6"){
+    //             $('#money').attr("src",imgs[1]);
+    //             rup=scors[1];
+    //         }
+            //  $('#moneys').show();   
+    //             $('#moneys').hide(2000);
+    //             var add=$('#socar').html();
+    //             var ans=Number(add)+Number(rup);
+    //             $('#socar').html(ans);
+        //  });
+    //     }else{
+    //         alert("please Allready Visited :");
+    //     }
+    //     });
+
+    // });
+    function process(n){
+        let tops=boxs[n];
+         let b="#box";
+         b+=n;
+        var ball=$('#imgs');
+        ball.animate({left:"87vw",top:tops+'px'},3000,function(){
+            sounds.play();
+         $(b).effect({
+                duration:3000,
+                effect:"explode",
+                pieces:200
+            },function(){
+                $(b).css({backgroundColor:"red"});
+            });
+            
+            ball.css({left:"0px",top:"200px"});
+        
+            let rup;
+            // console.log(color);
+            if(b=="#box1" || b=="#box5"){
+                $('#money').attr("src",imgs[2]);
+                rup=scors[2];
+            }else if(b=="#box2" || b=="#box4"){
+                $('#money').attr("src",imgs[0]);
+                rup=scors[0];
+            }else if(b=="#box3"|| b=="#box6"){
+                $('#money').attr("src",imgs[1]);
+                rup=scors[1];
+            }
+             $('#moneys').show();   
+                $('#moneys').hide(2000);
+                var add=$('#socar').html();
+                var ans=Number(add)+Number(rup);
+                $('#socar').html(ans);
+         });
+           console.log(numbers_r);
+    }
+    let numbers_r=[1,2,3,4,5,6];
+    function suffle(){
+      
+        for(let i=numbers_r.length-1;i>0;i--){
+            let j=Math.floor(Math.random()*(i+1));
+            [numbers_r[i],numbers_r[j]]=[numbers_r[j],numbers_r[i]];
+        }
+
+        return numbers_r.pop();
+    }
+    $(document).ready(function(){
+       $('#but1').click(function(){
+          let n=suffle();
+          $('#prints').html(n);
+          $('#but1').prop('disabled',true);
+         process(n);
+        });
+          $('#but2').click(function(){
+          let n=suffle();
+          $('#prints').html(n);
+          $('#but2').prop('disabled',true);
+          process(n);
+          });
+          $('#but3').click(function(){
+          let n=suffle();
+          $('#prints').html(n);
+          $('#but3').prop('disabled',true);
+          process(n);
+          });
+          $('#but4').click(function(){
+          let n=suffle();
+          $('#prints').html(n);
+          $('#but4').prop('disabled',true);
+          process(n);
+          });
+          $('#but5').click(function(){
+          let n=suffle();
+          $('#prints').html(n);
+          $('#but5').prop('disabled',true);
+          process(n);
+          });
+          $('#but6').click(function(){
+          let n=suffle();
+          $('#prints').html(n);
+          $('#but6').prop('disabled',true);
+        process(n);
+          });
+});
+    
+   
+</script>
+</html>
