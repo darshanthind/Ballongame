@@ -4,50 +4,7 @@ var vist = ["0", "false", "false", "false", "false", "false", "false"];
 let scors = [1000, 10, -500];
 let socors = 0;
 let sounds = new Audio("balloonpop-83760.mp3");
-// $(document).ready(()=>{
-//     let a=1;
-//     $('#but').click(()=>{
-//      var p=$('#prints');
-//      var number=Math.floor(Math.random()*6)+1;
-//      if(vist[number]=="false"){
-//     vist[number]="true";
-//      p.html(number);
-//      let tops=boxs[number];
-//      let b="#box";
-//      b+=number;
-//     var ball=$('#imgs');
-//     ball.animate({left:"87vw",top:tops+'px'},3000,function(){
-//      $(b).effect({
-//             duration:3000,
-//             effect:"explode",
-//             pieces:200
-//         });
-//         ball.css({left:"0px",top:"200px"});
 
-//         let rup;
-//         // console.log(color);
-//         if(b=="#box1" || b=="#box5"){
-//             $('#money').attr("src",imgs[2]);
-//             rup=scors[2];
-//         }else if(b=="#box2" || b=="#box4"){
-//             $('#money').attr("src",imgs[0]);
-//             rup=scors[0];
-//         }else if(b=="#box3"|| b=="#box6"){
-//             $('#money').attr("src",imgs[1]);
-//             rup=scors[1];
-//         }
-//  $('#moneys').show();   
-//             $('#moneys').hide(2000);
-//             var add=$('#socar').html();
-//             var ans=Number(add)+Number(rup);
-//             $('#socar').html(ans);
-//  });
-//     }else{
-//         alert("please Allready Visited :");
-//     }
-//     });
-
-// });
 function process(n) {
     let tops = boxs[n];
     let b = "#box";
